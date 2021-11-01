@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/u/",
             "outputPath": "dist/ncku-math",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/material.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,6 +96,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
