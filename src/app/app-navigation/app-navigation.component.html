@@ -1,0 +1,68 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>
+      <picture class="limited-size">
+        <source type="image/webp" srcset="assets/sidenav-icon.webp" />
+        <img src="assets/sidenav-icon.png" alt="logo" />
+      </picture>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        *ngFor="let link of links"
+        routerLink="{{ link.path }}"
+        >{{ link.title }}</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>國立成功大學數學系 | NCKU Mathematics Dept.</span>
+      </mat-toolbar>
+    </header>
+
+    <main class="occupied">
+      <router-outlet></router-outlet>
+    </main>
+    <footer>
+      <mat-toolbar color="accent">
+        <mat-toolbar-row class="footer-text"
+          >國立成功大學數學系</mat-toolbar-row
+        >
+        <mat-toolbar-row class="footer-text"
+          >701401 台南市大學路一號</mat-toolbar-row
+        >
+        <mat-toolbar-row class="footer-text"
+          >電話︰(06) 2757575 分機 65100</mat-toolbar-row
+        >
+        <mat-toolbar-row class="footer-text"
+          >傳真︰(06) 2743191</mat-toolbar-row
+        >
+        <mat-toolbar-row class="footer-text"
+          ><a
+            target="_blank"
+            href="mailto:em65100@email.ncku.edu.tw?subject=請輸入郵件主旨"
+            >em65100@email.ncku.edu.tw</a
+          ></mat-toolbar-row
+        >
+      </mat-toolbar>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

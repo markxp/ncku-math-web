@@ -1,0 +1,22 @@
+.container {
+  margin: 20px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.spacing {
+  margin: 1rem;
+}
+
+.column-spacing {
+  padding-right: 1em;
+}
+
+.mat-cell {
+  padding: 1rem;
+  max-width: 300px;
+}
+
+table.mat-table {
+  width: 100%;
+}

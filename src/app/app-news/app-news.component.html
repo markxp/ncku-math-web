@@ -1,0 +1,20 @@
+<mat-card class="container">
+  <mat-card-title>News</mat-card-title>
+  <mat-card-content>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        *ngFor="let n of newsList"
+        [href]="n.href"
+        [disabled]="!n.href"
+        >{{ n.text }}</a
+      >
+    </mat-nav-list>
+  </mat-card-content>
+</mat-card>
+<mat-card class="container">
+    <mat-card-title>Pinned</mat-card-title>
+    <mat-card-content>
+        <mat-nav-list><a mat-list-item href="#">誠徵教師</a></mat-nav-list>
+    </mat-card-content>
+</mat-card>

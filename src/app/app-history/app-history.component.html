@@ -1,0 +1,128 @@
+<mat-card class="container">
+  <mat-card-title>History</mat-card-title>
+  <mat-card-content>
+    <p>
+      成功大學創校於西元1931年（昭和6年，民國20年），原名為「臺南高等工業學校」；1944年（昭和19年，民國33年）改稱為「臺南工業專門學校」。民國35年2月改制為「臺灣省立臺南工業專科學校」；35年10月改制為「臺灣省立工學院」；45年改制為「臺灣省立成功大學」。
+    </p>
+    <p>
+      民國45年，本校改制為成功大學的同時，正式成立「數學系」，旨在培育數學理論及應用之人才，為科技本土化奠基。
+    </p>
+    <p>
+      民國62年，因應當時社會需求，開辦「夜間部數學系」；民國67年，將夜間部數學系改稱「應用數學系」；民國69年，為進一步提升數學研究人才的培育，成立「應用數學研究所碩士班」，並在民國82年，成立「應用數學研究所博士班」。
+    </p>
+    <p>
+      從民國86年起，由於國內廣設大學，夜間部學生減少，夜間部改為「進修推廣教育學士班」，以服務在職進修為主要教學目標；民國89年起，進修推廣教育學士班停止招生。
+    </p>
+
+    <table class="spacing">
+      <tr *ngFor="let t of timelineData">
+        <td class="column-spacing">{{ t.year + " 年" }}</td>
+        <td>{{ t.event }}</td>
+      </tr>
+    </table>
+    <p>
+      數學系目前使用的系館位於成功大學的成功校區，原為成功大學的行政大樓，是一棟地下1層、地面4層的建築物。建物南側、北側及西側之垂直遮陽構造為本建築最大特徵。建築物於
+      1974
+      年左右完工後，同年3月將原位於成功校區校門口的實習銀行遷入本建築營運。1976
+      年因應光復校區行政大樓（大成館）修繕問題，乃將行政中心遷入本建築，本建築因此成為本校第三代行政大樓，延續至
+      1980 年之後。隨著現今的行政中心雲平大樓於 1991
+      年完工，本建築物於隔年撥交數學系作為系館使用。
+    </p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="container">
+  <mat-card-title>Chairman</mat-card-title>
+  <mat-card-content>
+    <table class="chairman-spacing" mat-table [dataSource]="chairmanList">
+      <ng-container matColumnDef="place">
+        <th mat-header-cell *matHeaderCellDef>屆數</th>
+        <td mat-cell *matCellDef="let chairman; index as i">{{ i + 1 }}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>姓名</th>
+        <td mat-cell *matCellDef="let chairman">{{ chairman.name }}</td>
+      </ng-container>
+      <ng-component matColumnDef="term-of-office">
+        <th mat-header-cell *matHeaderCellDef>任期</th>
+        <td mat-cell *matCellDef="let chairman">
+          {{ chairman.start }} ~
+          {{ chairman.end !== "" ? chairman.end : "現任" }}
+        </td>
+      </ng-component>
+
+      <tr mat-header-row *matHeaderRowDef="charmanTableColumnNames"></tr>
+      <tr mat-row *matRowDef="let row; columns: charmanTableColumnNames"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+<mat-card class="container">
+  <mat-card-title>Current</mat-card-title>
+  <mat-card-content>
+    <p>
+      成大數學系從45學年開創時的6位專任教師，發展到目前有35位專任教師：其中教授12位，副教授10位，助理教授13位；專職行政人員
+      6
+      位；博士班學生12位，碩士班學生59位，大學部學生237位；數學系老師人數與全系所學生人數的比例約為1
+      : 9.3，老師人數與研究生人數的比例約為1 : 2.15。
+    </p>
+    <p>
+      成大數學系參考台灣大學數學系、美國加州大學、Purdue及Cornell大學數學系的作法，擬定課程地圖、課程規劃、跨領域課程及訂定大學部與研究所銜接課程。除了提供本系所學生的專業數學課程，數學系同時也負責全校微積分基礎課程及提升學生的數學能力。
+    </p>
+    <p>
+      數學系的教師認真負責地致力於教學及輔導工作。除了致力於課程教學，數學系老師也關心學生學習與生活的狀況，盡力協助每一位學生做好個人的生涯規劃。其中有多位優秀教師表現出色，並獲得榮譽與肯定。
+    </p>
+    <p>
+      除了提供本系所學生的專業數學課程，數學系同時也負責全校「大班教學、小班研討」的微積分，提供全校理工學院、電機資訊學院、規劃設計學院、醫藥生物科技學院、社科管理學院及學士學程、能源學程和高中科學班，共44個學系、學程班級；一學年235-237學分及外加大約137小時研討實習的課程，給將近2400名學生的微積分基礎課程，讓數學系老師人數與全校選修微積分課程的學生人數比例達
+      1 :
+      72.7左右，明顯地高於理想的師生比例許多。雖然，全校的微積分課程明顯加重了數學系老師的教學負擔。但是，基於提升全校學生數學能力的使命，微積分的教學始終是數學系最重要的教學工作之一。
+    </p>
+    <p>
+      數學系的教師除了負責教學工作培育數學人才，也同時積極地在純數學及應用數學從事學術研究，廣泛的研究領域包括：代數、分析、幾何、數值分析、科學計算、作業研究、機率論及統計等。其中有多位優秀學者在各研究領域表現出色，備受數學界矚目並獲得肯定。澳洲國科會針對1186份數學相關的期刊進行評比：過去5年，數學系在最優質的A*等級(前7.7%)期刊中發表超過33篇的論文。成大數學系在2012及2013年的QS世界大學數學學科排名都排進第51名到100名之間。
+    </p>
+    <p>
+      為了積極推廣數學教育，數學系老師主辦數學或應用數學專業領域的短期課程、工作坊及專業或研討會，還會應邀擔任學術組織、期刊的行政職務、審查人及編輯提供專業諮詢與服務。另外，為了協助建立高中教師再培訓管道，提升教學能力，數學系邀請高中老師到成大與系上老師進行研習座談，並透過為高中科學班授課或舉辦數學研習營來提升高中學生的數學能力。
+    </p>
+    <p>
+      除此之外，數學系也關心高中數學教育，發動連署反對將數學領域時數從現行3年的必修與必選24學分大幅刪減為2年的必修12學分。這個攸關台灣下一代競爭力的連署，得到學術界、家長及學生熱烈的迴響及超過90位中研院院士的支持，最後讓教育部做出高中數學課程時數維持現行課綱不刪減的決議。
+    </p>
+    <p>
+      為了促進畢業系友與在校學弟妹經驗傳承感情交流，數學系每一年配合校慶期間辦理系友返系聯誼活動；數學系也不定期邀請畢業系友返校進行專業或就業生涯規劃座談會。數學系系友基金會每一學年提供多項獎學金給學業成績或課外活動表現優異的大學部或研究所的學生。系友基金會也協助數學系推動學術交流，補助來訪學者及新聘教師學術活動的相關經費。
+    </p>
+    <p>
+      數學系期望學校讓數學系繼續增聘優秀的研究、教學人才，以確實提升數學系之教學品質及研究能量。在教室空間方面，目前數學系的系館是一棟完全無法改善成適合「數學教學」的老舊建築。隨著成功大學的擴展及學系、學程班級的增設，微積分課程也逐年增加，可是，適合微積分「大班教學、小班研討」的教室卻明顯不足。為了提升全校的教學品質及數學系的發展，數學系期望學校能在數學系館原地興建一棟適合數學教學的教學大樓，進一步提升全校數學的教學品質。
+    </p>
+  </mat-card-content>
+</mat-card>
+<mat-card class="container">
+  <mat-card-title>faculty</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="facultyChanges">
+      <ng-container matColumnDef="schoolYear">
+        <th mat-header-cell *matHeaderCellDef>學年</th>
+        <td mat-cell *matCellDef="let element">{{ element.schoolYear }}</td>
+      </ng-container>
+      <ng-container matColumnDef="add">
+        <th mat-header-cell *matHeaderCellDef>到任</th>
+        <td mat-cell *matCellDef="let element">{{ element.add }}</td>
+      </ng-container>
+      <ng-container matColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef>離職/退休</th>
+        <td mat-cell *matCellDef="let element">{{ element.remove }}</td>
+      </ng-container>
+      <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef>備註</th>
+        <td mat-cell *matCellDef="let element">{{ element.comment }}</td>
+      </ng-container>
+      <ng-container matColumnDef="netFaculty">
+        <th mat-header-cell *matHeaderCellDef>師資增減</th>
+        <td mat-cell *matCellDef="let element">{{ element.netFaculty }}</td>
+      </ng-container>
+      <ng-container matColumnDef="totalFaculty">
+        <th mat-header-cell *matHeaderCellDef>累計師資</th>
+        <td mat-cell *matCellDef="let element">{{ element.totalFaculty }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="facultyTableColumnNames"></tr>
+      <tr mat-row *matRowDef="let row; columns: facultyTableColumnNames"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
