@@ -19,7 +19,6 @@ import { AppAboutLocationComponent } from './app-about-location/app-about-locati
 import { AppAboutRulesComponent } from './app-about-rules/app-about-rules.component';
 import { AppAboutComponent } from './app-about/app-about.component';
 import { AppHistoryComponent } from './app-history/app-history.component';
-import { AppNavigationComponent } from './app-navigation/app-navigation.component';
 import { AppNewsComponent } from './app-news/app-news.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +27,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavigationComponent,
     AppAboutComponent,
     AppAboutListComponent,
     AppAboutLocationComponent,
