@@ -11,6 +11,16 @@ To the next stage, one can integrate Firebase firestore or abstract the data lay
 
 The route is configured with the prefix `/u/`, which leaves a room for backend API routing, such as `/b/seminars/list`, which is not scoped here. One can configure it through angular.json file, the index.html should not be changed.
 
+## Prepare development environment
+
+- [install nodejs](https://nodejs.org/en/download/) or [install npm through fnm](https://github.com/Schniz/fnm)
+- install npm (may installed automatically when insatll nodejs)
+- (optional) install angular CLI globally `npm install -g @angular/cli`
+- in the source code directory, run `npm install` to install all dependencies
+
+There you have it. Happy coding and build the static files!
+Run `ng serve` to see how it works!
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
