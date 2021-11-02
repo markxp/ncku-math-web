@@ -5,6 +5,8 @@ It is a proof-of-concept website for modern web development.
 
 It uses a reliable frontend framework, [Angular](https://angular.io/), and [Angular Material UI & CDK](https://material.angular.io/) to provide the frontend routing and data serving.
 
+This project does not contain a datastore layer. It's a client-side app. Check Firebase Firestore, or implement a set APIs to gain data persistency.
+
 To the next stage, one can integrate Firebase firestore or abstract the data layer by implementing angular services.
 
 The route is configured with the prefix `/u/`, which leaves a room for backend API routing, such as `/b/seminars/list`, which is not scoped here. One can configure it through angular.json file, the index.html should not be changed.
