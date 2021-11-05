@@ -51,11 +51,17 @@ handlers:
   - url: /
     static_files: dist/ncku-math/index.html
     upload: dist/ncku-math/index.html
+  - url: /u/
+    static_files: dist/ncku-math/index.html
+    upload: dist/ncku-math/index.html
   - url: /u/assets
     static_dir: dist/ncku-math/assets
   - url: /u/(.*\.(ico|js|css))
     static_files: dist/ncku-math/\1
     upload: dist/ncku-math/.*\.(ico|js|css)
+  - url: /u/.*
+    static_files: dist/ncku-math/index.html
+    upload: dist/ncku-math/index.html
   - url: /.*
     script: auto
 ```
