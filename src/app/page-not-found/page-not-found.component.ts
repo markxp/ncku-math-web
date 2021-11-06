@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
@@ -8,15 +8,16 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   styleUrls: ['./page-not-found.component.css'],
 })
 export class PageNotFoundComponent implements OnInit, OnDestroy {
-
-  urlStream = new BehaviorSubject<UrlSegment[]>(this.route.snapshot.url);
+  urlStream = new BehaviorSubject<string>(this.route.snapshot.url.join('/'));
 
   url$: Subscription | undefined = undefined;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.url$ = this.route.url.subscribe((url) => this.urlStream.next(url));
+    this.url$ = this.route.url.subscribe((url) =>
+      this.urlStream.next(url.join('/'))
+    );
   }
 
   ngOnDestroy(): void {
