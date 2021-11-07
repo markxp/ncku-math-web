@@ -9,7 +9,7 @@ This project does not contain a datastore layer. It's a client-side app. Check F
 
 To the next stage, one can integrate Firebase firestore or abstract the data layer by implementing angular services.
 
-The route is configured with the prefix `/u/`, which leaves a room for backend API routing, such as `/b/seminars/list`, which is not scoped here. One can configure it through angular.json file, the index.html should not be changed.
+The route is configured with the prefix `/u/`, which leaves a room for backend API routing, such as `/b/seminars/list`, which is not scoped here. One can configure it through `baseHref` in the `angular.json` file, the `index.html` should not be changed.
 
 ## Prepare development environment
 
@@ -48,25 +48,34 @@ runtime: go116
 instance_class: F1
 
 handlers:
+  # real files
+  - url: /u/assets
+    static_dir: dist/ncku-math/assets
+  - url: /u/(.*\.(ico|js|css))
+    static_files: dist/ncku-math/\1
+    upload: dist/ncku-math/.*\.(ico|js|css)
+  # route to entrypoint
   - url: /
     static_files: dist/ncku-math/index.html
     upload: dist/ncku-math/index.html
   - url: /u/
     static_files: dist/ncku-math/index.html
     upload: dist/ncku-math/index.html
-  - url: /u/assets
-    static_dir: dist/ncku-math/assets
-  - url: /u/(.*\.(ico|js|css))
-    static_files: dist/ncku-math/\1
-    upload: dist/ncku-math/.*\.(ico|js|css)
   - url: /u/.*
     static_files: dist/ncku-math/index.html
     upload: dist/ncku-math/index.html
+  # route to backend service
+  # receiving all reminding routes
+  #
+  # you need at least one route to the backend service
+  # or the deployment will fail.
   - url: /.*
     script: auto
 ```
 
-Noting that you must have at least one `script:auto` with your backend code or it will failed. The `/u` is our custom prefix, as I mentioned earlier.
+Noting that you must have at least one `script:auto` with your backend code or the deployment will fail. (App Engine's constraint)
+
+The `/u` is our custom prefix, labeled in `baseHref`, as I mentioned earlier in the first section.
 
 ## Running unit tests
 
