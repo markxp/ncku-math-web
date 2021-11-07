@@ -65,7 +65,7 @@ handlers:
     static_files: dist/ncku-math/index.html
     upload: dist/ncku-math/index.html
   # route to backend service
-  # receiving all reminding routes
+  # receiving all remaining routes
   #
   # you need at least one route to the backend service
   # or the deployment will fail.
