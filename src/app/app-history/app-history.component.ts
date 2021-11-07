@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Chairman } from '../chairman';
+import { ChairmanService } from '../chairman.service';
 @Component({
   selector: 'app-app-history',
   templateUrl: './app-history.component.html',
@@ -38,112 +39,7 @@ export class AppHistoryComponent implements OnInit {
     },
   ];
 
-  charmanTableColumnNames = ['place', 'name', 'term-of-office'];
-
-  chairmanList = [
-    {
-      place: 1,
-      name: '樊平章',
-      start: '1956-08-01',
-      end: '1963-07-31',
-    },
-    {
-      place: 2,
-      name: '趙少鐵',
-      start: '1963-08-01',
-      end: '1969-07-31',
-    },
-    {
-      place: 3,
-      name: '林宜禧',
-      start: '1969-08-01',
-      end: '1975-07-31',
-    },
-    {
-      place: 4,
-      name: '陳珍漢',
-      start: '1975-08-01',
-      end: '1983-07-31',
-    },
-    {
-      place: 5,
-      name: '李育嘉',
-      start: '1983-08-01',
-      end: '1985-07-31',
-    },
-    {
-      place: 6,
-      name: '陳順宇',
-      start: '1985-08-01',
-      end: '1986-07-31',
-    },
-    {
-      place: 7,
-      name: '李育嘉',
-      start: '1986-08-01',
-      end: '1989-07-31',
-    },
-    {
-      place: 8,
-      name: '李春得',
-      start: '1989-08-01',
-      end: '1992-07-31',
-    },
-    {
-      place: 9,
-      name: '黃永裕',
-      start: '1992-08-01',
-      end: '1998-07-31',
-    },
-    {
-      place: 10,
-      name: '吳順益',
-      start: '1998-08-01',
-      end: '2001-07-31',
-    },
-    {
-      place: 11,
-      name: '林琦焜',
-      start: '2001-08-01',
-      end: '2004-07-31',
-    },
-    {
-      place: 12,
-      name: '柯文峰',
-      start: '2004-08-01',
-      end: '2006-07-31',
-    },
-    {
-      place: 13,
-      name: '林牛',
-      start: '2006-08-01',
-      end: '2008-07-31',
-    },
-    {
-      place: 14,
-      name: '許瑞麟',
-      start: '2008-08-01',
-      end: '2012-07-31',
-    },
-    {
-      place: 15,
-      name: '陳若淳',
-      start: '2012-08-01',
-      end: '2015-07-31',
-    },
-    {
-      place: 16,
-      name: '林景隆',
-      start: '2015-08-01',
-      end: '2021-07-31',
-    },
-    {
-      place: 17,
-      name: '黃世昌',
-      start: '2021-08-01',
-      end: '',
-    },
-  ];
+  chairmanTableColumnNames = ['place', 'name', 'term-of-office'];
 
   facultyTableColumnNames = [
     'schoolYear', // 學年
@@ -171,7 +67,12 @@ export class AppHistoryComponent implements OnInit {
       totalFaculty: 6,
     },
   ];
-  constructor() {}
+
+  public chairmanSortfn(a: Chairman, b: Chairman) {
+    return a.place - b.place;
+  }
+  
+  constructor(public chairmanservice: ChairmanService) {}
 
   ngOnInit(): void {}
 }

@@ -33,26 +33,31 @@
 <mat-card class="container">
   <mat-card-title>Chairman</mat-card-title>
   <mat-card-content>
-    <table class="chairman-spacing" mat-table [dataSource]="chairmanList">
-      <ng-container matColumnDef="place">
-        <th mat-header-cell *matHeaderCellDef>屆數</th>
-        <td mat-cell *matCellDef="let chairman; index as i">{{ i + 1 }}</td>
-      </ng-container>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>姓名</th>
-        <td mat-cell *matCellDef="let chairman">{{ chairman.name }}</td>
-      </ng-container>
-      <ng-component matColumnDef="term-of-office">
-        <th mat-header-cell *matHeaderCellDef>任期</th>
-        <td mat-cell *matCellDef="let chairman">
-          {{ chairman.start }} ~
-          {{ chairman.end !== "" ? chairman.end : "現任" }}
-        </td>
-      </ng-component>
+    <ng-container *ngIf="chairmanservice.list() | async as chairmanList">
+      <table class="chairman-spacing" mat-table [dataSource]="chairmanList.sort(chairmanSortfn)">
+        <ng-container matColumnDef="place">
+          <th mat-header-cell *matHeaderCellDef>屆數</th>
+          <td mat-cell *matCellDef="let chairman">{{ chairman.place }}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>姓名</th>
+          <td mat-cell *matCellDef="let chairman">{{ chairman.name }}</td>
+        </ng-container>
+        <ng-component matColumnDef="term-of-office">
+          <th mat-header-cell *matHeaderCellDef>任期</th>
+          <td mat-cell *matCellDef="let chairman">
+            {{ chairman.start | date: "yyyy-MM-dd":'+0800' }} ~
+            {{ !!chairman.end ? (chairman.end | date: "yyyy-MM-dd": '+0800') : "現任" }}
+          </td>
+        </ng-component>
 
-      <tr mat-header-row *matHeaderRowDef="charmanTableColumnNames"></tr>
-      <tr mat-row *matRowDef="let row; columns: charmanTableColumnNames"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="chairmanTableColumnNames"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: chairmanTableColumnNames"
+        ></tr>
+      </table>
+    </ng-container>
   </mat-card-content>
 </mat-card>
 <mat-card class="container">
